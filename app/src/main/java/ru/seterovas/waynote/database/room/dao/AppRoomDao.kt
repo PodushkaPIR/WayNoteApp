@@ -15,12 +15,12 @@ interface AppRoomDao {
     fun getAllNotes(): Flow<List<NoteModel>>
 
     @Insert
-    fun addNote(note: NoteModel)
+    fun insert(note: NoteModel)
 
     @Update
-    fun updateNote(note: NoteModel)
+    fun update(note: NoteModel)
 
     @Delete
-    fun deleteNote(note: NoteModel)
+    fun delete(note: NoteModel)
 
 }
