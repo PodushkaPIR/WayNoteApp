@@ -4,7 +4,7 @@ import kotlinx.coroutines.flow.Flow
 import ru.seterovas.waynote.database.room.dao.AppRoomDao
 import ru.seterovas.waynote.model.NoteModel
 
-class RoomRepository(private val noteRoomDao: AppRoomDao) {
+class NoteRepository(private val noteRoomDao: AppRoomDao) {
 
     fun getAllNotes(): Flow<List<NoteModel>> {
         return noteRoomDao.getAllNotes()

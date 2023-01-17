@@ -1,9 +1,11 @@
 package ru.seterovas.waynote.ui.vm
 
 import androidx.lifecycle.ViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
-import ru.seterovas.waynote.database.room.repository.RoomRepository
+import ru.seterovas.waynote.database.room.repository.NoteRepository
 import ru.seterovas.waynote.model.NoteModel
+import javax.inject.Inject
 
 interface AppViewModelAbstract {
     val noteListFLow: Flow<List<NoteModel>>
@@ -12,9 +14,10 @@ interface AppViewModelAbstract {
     fun deleteNote(note: NoteModel)
 }
 
+@HiltViewModel
 class AppViewModel
-constructor(
-    private val noteRepository: RoomRepository
+@Inject constructor(
+    private val noteRepository: NoteRepository
     ) : ViewModel(), AppViewModelAbstract{
     override val noteListFLow: Flow<List<NoteModel>> = noteRepository.getAllNotes()
 
