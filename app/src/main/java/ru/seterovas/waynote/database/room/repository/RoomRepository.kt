@@ -1,11 +1,10 @@
 package ru.seterovas.waynote.database.room.repository
 
 import kotlinx.coroutines.flow.Flow
-import ru.seterovas.waynote.database.DatabaseRepository
 import ru.seterovas.waynote.database.room.dao.AppRoomDao
 import ru.seterovas.waynote.model.NoteModel
 
-class RoomRepository(private val noteRoomDao: AppRoomDao) : DatabaseRepository {
+class RoomRepository(private val noteRoomDao: AppRoomDao) {
 
     fun getAllNotes(): Flow<List<NoteModel>> {
         return noteRoomDao.getAllNotes()
