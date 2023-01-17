@@ -4,21 +4,21 @@ import kotlinx.coroutines.flow.Flow
 import ru.seterovas.waynote.database.room.dao.AppRoomDao
 import ru.seterovas.waynote.model.NoteModel
 
-class NoteRepository(private val noteRoomDao: AppRoomDao) {
+class NoteRepository(private val noteDao: AppRoomDao) {
 
     fun getAllNotes(): Flow<List<NoteModel>> {
-        return noteRoomDao.getAllNotes()
+        return noteDao.getAllNotes()
     }
 
-    fun insert(note: NoteModel) {
-        noteRoomDao.insert(note = note)
+    suspend fun insert(note: NoteModel) {
+        noteDao.insert(note = note)
     }
 
-    fun update(note: NoteModel) {
-        noteRoomDao.update(note = note)
+    suspend fun update(note: NoteModel) {
+        noteDao.update(note = note)
     }
 
-    fun delete(note: NoteModel) {
-        noteRoomDao.delete(note = note)
+    suspend fun delete(note: NoteModel) {
+        noteDao.delete(note = note)
     }
 }

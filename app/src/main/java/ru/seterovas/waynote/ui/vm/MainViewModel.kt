@@ -7,7 +7,7 @@ import ru.seterovas.waynote.database.room.repository.NoteRepository
 import ru.seterovas.waynote.model.NoteModel
 import javax.inject.Inject
 
-interface AppViewModelAbstract {
+interface MainViewModelAbstract {
     val noteListFLow: Flow<List<NoteModel>>
     fun addNote(note: NoteModel)
     fun updateNote(note: NoteModel)
@@ -15,10 +15,10 @@ interface AppViewModelAbstract {
 }
 
 @HiltViewModel
-class AppViewModel
+class MainViewModel
 @Inject constructor(
     private val noteRepository: NoteRepository
-    ) : ViewModel(), AppViewModelAbstract{
+    ) : ViewModel(), MainViewModelAbstract{
     override val noteListFLow: Flow<List<NoteModel>> = noteRepository.getAllNotes()
 
     override fun addNote(note: NoteModel) {

@@ -7,6 +7,7 @@ import androidx.navigation.compose.composable
 import ru.seterovas.waynote.ui.screens.AddScreen
 import ru.seterovas.waynote.ui.screens.DetailScreen
 import ru.seterovas.waynote.ui.screens.HomeScreen
+import ru.seterovas.waynote.ui.vm.MainViewModel
 import ru.seterovas.waynote.util.Constants
 
 sealed class NavRoute(val route: String){
