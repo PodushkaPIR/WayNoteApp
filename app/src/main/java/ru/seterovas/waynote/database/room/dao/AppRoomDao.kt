@@ -5,20 +5,22 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
+import kotlinx.coroutines.flow.Flow
+import ru.seterovas.waynote.model.NoteModel
 
 @Dao
 interface AppRoomDao {
 
     @Query("SELECT * FROM note_table")
-    suspend fun getAllNotes()
+    fun getAllNotes(): Flow<List<NoteModel>>
 
     @Insert
-    suspend fun addNote()
+    fun addNote(note: NoteModel)
 
     @Update
-    suspend fun updateNote()
+    fun updateNote(note: NoteModel)
 
     @Delete
-    suspend fun deleteNote()
+    fun deleteNote(note: NoteModel)
 
 }
