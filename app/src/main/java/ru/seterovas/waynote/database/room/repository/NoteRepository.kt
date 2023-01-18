@@ -1,24 +1,29 @@
 package ru.seterovas.waynote.database.room.repository
 
-import kotlinx.coroutines.flow.Flow
+import androidx.lifecycle.LiveData
+import ru.seterovas.waynote.database.DatabaseRepository
 import ru.seterovas.waynote.database.room.dao.AppRoomDao
 import ru.seterovas.waynote.model.NoteModel
 
-class NoteRepository(private val noteDao: AppRoomDao) {
+class NoteRepository(private val noteRoomDao: AppRoomDao): DatabaseRepository {
 
-    fun getAllNotes(): Flow<List<NoteModel>> {
-        return noteDao.getAllNotes()
+    override val readAll: LiveData<List<NoteModel>>
+        get() = noteRoomDao.getAllNotes()
+
+    override suspend fun create(note: NoteModel, onSuccess: () -> Unit) {
+        noteRoomDao.addNote(note = note)
+        onSuccess()
     }
 
-    suspend fun insert(note: NoteModel) {
-        noteDao.insert(note = note)
+    override suspend fun update(note: NoteModel, onSuccess: () -> Unit) {
+        noteRoomDao.updateNote(note = note)
+        onSuccess()
     }
 
-    suspend fun update(note: NoteModel) {
-        noteDao.update(note = note)
+    override suspend fun delete(note: NoteModel, onSuccess: () -> Unit) {
+        noteRoomDao.deleteNote(note = note)
+        onSuccess()
     }
 
-    suspend fun delete(note: NoteModel) {
-        noteDao.delete(note = note)
-    }
+    override fun signOut() {}
 }

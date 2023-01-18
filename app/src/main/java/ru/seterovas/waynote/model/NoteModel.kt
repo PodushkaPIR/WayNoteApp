@@ -11,5 +11,12 @@ data class NoteModel(
     val roomId: Long ?= null,
 
     @ColumnInfo
-    val title: String
+    val title: String,
+
+    @ColumnInfo
+    val proteinInfo: Int,
+    @ColumnInfo
+    val fatInfo: Int,
+    @ColumnInfo
+    val carbInfo: Int,
 )

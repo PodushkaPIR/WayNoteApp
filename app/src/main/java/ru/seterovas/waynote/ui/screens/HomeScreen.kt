@@ -16,8 +16,6 @@ import ru.seterovas.waynote.ui.vm.MainViewModel
 @Composable
 fun HomeScreen(navController: NavController, mViewModel: MainViewModel) {
 
-    val noteListState = mViewModel.noteListFLow.collectAsState(initial = listOf())
-
     Scaffold(
         floatingActionButton ={
             FloatingActionButton(
@@ -32,6 +30,6 @@ fun HomeScreen(navController: NavController, mViewModel: MainViewModel) {
             }
         }
     ) {
-        LazyColumn(content = )
+
     }
 }
